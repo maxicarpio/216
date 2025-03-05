@@ -1,0 +1,49 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-image: url("images/wallpaper.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    color: rgb(79, 79, 79);
+    background-color: black;
+}
+
+
+.principal{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center
+}
+
+.container{
+    background-color: rgba(73, 55, 55, 0.392);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 30px;
+    width: 300px;
+    min-width: 300px;
+    text-align: justify;
+    box-shadow: 0 0 10px black;
+    display: flex;
+    flex-direction: column;
+}
+
+.montanas img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.container p1{
+    margin: 10px 0;
+}
+
+img{
+    border-radius: 20px;
+}
+
+h2{
+    text-align: center;
+}
