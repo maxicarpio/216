@@ -3,13 +3,12 @@ body{
     display: flex;
     flex-direction: column;
     text-align: center;
-    background-image: url("images/wallpaper.jpg");
     background-size: contain;
     background-repeat: no-repeat;
     color: rgb(79, 79, 79);
-    background-color: black;
+    background-color: white;
+    margin-top: 140px;
 }
-
 
 .principal{
     display: flex;
@@ -18,17 +17,34 @@ body{
     justify-content: center
 }
 
+@keyframes fadeOn {
+    from {
+      background-color: white
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0);
+      color: white;
+    }
+    to {
+        color: rgb(79, 79, 79);
+        background-color: rgba(172, 151, 151, 0.392);
+        box-shadow: 0 0 10px rgb(129, 127, 127);
+    }
+}
+
 .container{
-    background-color: rgba(73, 55, 55, 0.392);
     border-radius: 20px;
-    padding: 20px;
+    padding: 30px;
     margin: 30px;
     width: 300px;
     min-width: 300px;
     text-align: justify;
-    box-shadow: 0 0 10px black;
+    box-shadow: 0 0 10px rgb(129, 127, 127);
     display: flex;
     flex-direction: column;
+    line-height: 30px;
+    justify-content: center;
+    animation: fadeOn 5s ease forwards;
+    animation-timeline: view();
+    animation-range: entry 50% cover 50%;
 }
 
 .montanas img {
@@ -40,10 +56,26 @@ body{
     margin: 10px 0;
 }
 
+@keyframes Opacity{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
 img{
     border-radius: 20px;
+    animation: Opacity 5s;
+
 }
 
 h2{
     text-align: center;
+}
+
+h1{
+    margin-bottom: 120px;
+    animation: Opacity 5s;
 }
