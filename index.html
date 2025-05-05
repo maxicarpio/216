@@ -10,7 +10,8 @@
     </head>
     <body>
         <div>
-            <h1>oh, did you open the letter?</h1>
+            <h1 id="days-counter">[] días escribiendote.</h1>
+            <h1 id="container-counter">[] fragmentos escritos.</h1>
         </div>
         <div class="principal">
             <div class="container">
@@ -331,52 +332,82 @@
             </div>
             <div class="container">
                 <h2>26/04/2025</h2>
-                <p1>Todo salió como tenía que salir, defendí bien y a Pablo le encantó el proyecto</p1>
+                <p1>Todo salió como tenía que salir, defendí bien y a Pablo le encantó el proyecto. Se te nota feliz en Buenos Aires, me alegra mucho que hayas encontrado tu lugar.</p1>
             </div>
             <div class="container">
-                <h2>25/04/2025</h2>
-                <p1></p1>
+                <h2>27/04/2025</h2>
+                <p1>Casi te quedas sin subte corazón, descubrimos que vos haces las cosas al revés jajajaja</p1>
             </div>
             <div class="container">
-                <h2>25/04/2025</h2>
-                <p1></p1>
+                <h2>28/04/2025</h2>
+                <p1>Ambos rendimos hoy y a la misma hora, estamos cagados hasta las patas. Te pasaron foto del parcial del otro turno y parece que no cambia la estructura.
+                    Update: Te cambiaron la estructura, a mis amigos les rompieron el... Esperemos que nos haya ido bien. Te extraño un montón, te amo.</p1>
+                </p1>
             </div>
             <div class="container">
-                <h2>25/04/2025</h2>
-                <p1></p1>
+                <h2>29/04/2025</h2>
+                <p1>Finalmente nos vimos, fuí de sorpresa al aeropuerto y no te lo esperabas. Pasamos un día bello. Encima como es finde largo, me voy a Campo Santo 2 o 3 días (no se cuanto me quedo).</p1>
+                <img src="images/reencuentro.jpg" loading="lazy">
             </div>
             <div class="container">
-                <h2>25/04/2025</h2>
-                <p1></p1>
+                <h2>30/04/2025</h2>
+                <p1>Me dieron la nota del parcial de Estabilidad, me saqué un 60. Estoy muy contento. Y como no podía terminar mejor, HOY VOY A CAMPO SANTO, mi humor cambia completamente cuando te veo. Es solo un pequeño recordatorio de lo enamorado que estoy de vos. Hace mucho no subo fotos, voy a aprovechar que voy a estar con vos para plasmarlas acá.</p1>
             </div>
             <div class="container">
-                <h2>25/04/2025</h2>
-                <p1></p1>
+                <h2>01/05/2025</h2>
+                <p1>Dormimos juntitos, con mucho amor y mimos (te robé toda la colcha). Hoy comemos locro en lo de la nona y yo tengo MUCHA hambre. Sinceramente te veo y no puedo creer que estés a mi lado. Me emociona estar a tu lado. Siento como que cada día es una aventura nueva.</p1>
+                <img src="images/funny.jpg" loading="lazy">
             </div>
             <div class="container">
-                <h2>25/04/2025</h2>
-                <p1></p1>
+                <h2>01/04/2025</h2>
+                <p1>Nosotros volviendo de un hermoso día en la casa de la nona, después de enterarnos que tu tía es nazi. Tomé mucho cafecito (ignoremos el hecho que comí media olla de locro)</p1>
+                <img src="images/sunset.jpg" loading="lazy">
             </div>
             <div class="container">
-                <h2>25/04/2025</h2>
-                <p1></p1>
+                <h2>02/04/2025</h2>
+                <p1>Evento canónico de toda pareja, mi suegra me mostró las fotos de mi novia cuando era chiquita. Look at her, my little star. Si supieras que en serio iluminas mis días como si fueras el mismo sol.</p1>
+                <img src="images/star.jpg" loading="lazy">
             </div>
             <div class="container">
-                <h2>25/04/2025</h2>
-                <p1></p1>
+                <h2>02/04/2025</h2>
+                <p1>También fuimos a comer locro (otra vez), comí mucho (otra vez). Comimos la mitad de una mandarina al rayo del sol, mimos con alaska y la gordota de la daisy. Para colmo nos enteramos que te sacaste un 9 en el parcial de AMII. Lo tuyo es de no creer, mi genia.</p1>
+                <img src="images/nona.jpg" loading="lazy">
             </div>
             <div class="container">
-                <h2>25/04/2025</h2>
-                <p1></p1>
+                <h2>03/04/2025</h2>
+                <p1>Día de la despedida, aún así nos divertimos. Gracias por tanto mi vida, haces mis días realmente mejores</p1>
+                <img src="images/moto.jpg" loading="lazy">
             </div>
             <div class="container">
-                <h2>25/04/2025</h2>
-                <p1></p1>
+                <h2>04/04/2025</h2>
+                <p1>Hoy tuve que grabar el video para el IITA, que cansancio. Lo bueno es que nuestro proyecto va a tener un mayor alcance. Lo lindo? Es que ahora somos 2 vida mía, no hay quien nos pare.</p1>
             </div>
             <div class="container">
-                <h2>25/04/2025</h2>
-                <p1></p1>
+                <h2>05/04/2025 21:27</h2>
+                <p1>Hoy pensé todo el día en nosotros dos, no puedo dejar de pensar en tu carita, tus ojitos, en ese bello lunar que tenes. Te amo Aixa, y quiero que sepas que espero con ansias que veas esta pequeña página. Por más de que sea un pequeño detalle significa mucho para mí.</p1>
             </div>
         </div>
+        <script>
+            // Fecha de inicio (cambia esta fecha por la fecha real de inicio)
+            const startDate = new Date('2025-02-22'); // Formato: YYYY-MM-DD
+        
+            // Obtén la fecha actual
+            const currentDate = new Date();
+        
+            // Calcula la diferencia en milisegundos
+            const differenceInTime = currentDate - startDate;
+        
+            // Convierte la diferencia a días
+            const differenceInDays = Math.floor(differenceInTime / (1000 * 60 * 60 * 24));
+        
+            // Actualiza el contenido del elemento con el id "days-counter"
+            document.getElementById('days-counter').textContent = `${differenceInDays} días escribiéndote.`;
+        
+            // Contar los divs con la clase "container"
+            const containerCount = document.querySelectorAll('.container').length;
+        
+            // Actualizar el contenido del elemento con el id "container-counter"
+            document.getElementById('container-counter').textContent = `Hay ${containerCount} fragmentos.`;
+        </script>
     </body>
 </html>
