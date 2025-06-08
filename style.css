@@ -6,8 +6,12 @@ body{
     background-size: contain;
     background-repeat: no-repeat;
     color: rgb(79, 79, 79);
-    background-color: white;
-    margin-top: 140px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 40px;
+}
+
+.header{
+    padding: 50px;
 }
 
 .principal{
@@ -30,6 +34,25 @@ body{
     }
 }
 
+.go-bottom {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    background: #9b9b9b;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-size: 1.1em;
+    box-shadow: 0 2px 8px #b85c8e44;
+    cursor: pointer;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+    font-family: "Montserrat", sans-serif;
+    z-index: 1000; /* <-- Agrega o sube este valor */
+}
+.go-bottom:hover { opacity: 1; }
+
 .container{
     border-radius: 20px;
     padding: 30px;
@@ -47,6 +70,36 @@ body{
     animation-range: entry 50% cover 50%;
 }
 
+.container {
+    max-height: 60px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: max-height 0.5s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+    position: relative;
+}
+.container > *:not(h2) {
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    transition: opacity 0.3s, height 0.3s;
+}
+.container.open {
+    max-height: 2000px;
+    box-shadow: 0 12px 40px 0 rgba(185, 92, 142, 0.25);
+    cursor: default;
+}
+.container.open > *:not(h2) {
+    opacity: 1;
+    pointer-events: auto;
+    height: auto;
+    transition: opacity 0.6s, height 0.6s;
+}
+
+.container:hover {
+    transform: scale(1.03) rotate(-1deg);
+    box-shadow: 0 12px 40px 0 rgba(185, 92, 142, 0.25);
+}
+
 .montanas img {
     max-width: 100%;
     max-height: 100%;
@@ -54,6 +107,91 @@ body{
 
 .container p1{
     margin: 10px 0;
+}
+
+/* Lightbox para imágenes */
+.img-lightbox-bg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: Opacity 0.2s;
+}
+.img-lightbox-bg img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(185, 92, 142, 0.25);
+    border: 4px solid #fff;
+    background: white;
+}
+.img-lightbox-bg {
+    cursor: zoom-out;
+}
+
+@keyframes floatHeartWave {
+  0%   { transform: rotate(0deg)   translateY(0) scale(1);}
+  100% { transform: rotate(720deg) translateY(-100vh) scale(1.5);}
+}
+.heart {
+  position: fixed;
+  bottom: -40px;
+  left: 10vw;
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 0; /* <--- Cambia esto a 0 para que estén detrás */
+  animation: floatHeartWave 20s linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.header, .container, .principal {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes fadeOnNight {
+    from {
+        background-color: #2d1e2f;
+        box-shadow: 0 0 20px rgba(45, 30, 47, 0);
+        opacity: 0;
+    }
+    to {
+        background-color: rgba(60,30,60,0.85);
+        box-shadow: 0 0 10px #b85c8e;
+        opacity: 1;
+    }
+}
+
+body.night {
+    background: #18121b !important; /* Fondo base oscuro */
+    --overlay-color-1: #59425c;     /* Morado oscuro para gradiente */
+    --overlay-color-2: #540550;  
+}
+body.night .container {
+  background: rgba(60,30,60,0.85);
+  color: #ffe6f0;
+  animation: fadeOnNight 5s ease forwards !important;
+  border-color: #b85c8e;
+  color: white !important;
+}
+
+body.night h1,
+body.night h2,
+body.night h3,
+body.night .header h2,
+body.night p1 {
+    color: #fff !important;
+}
+
+body.night .frase-romantica {
+    color: #fff !important;
+}
+
+body.night .contador-palabras {
+    color: #fff !important;
 }
 
 @keyframes Opacity{
@@ -78,4 +216,79 @@ h2{
 h1{
     margin-bottom: 120px;
     animation: Opacity 5s;
+}
+
+#toggle-night {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #ffd8e7 0%, #fff5fb 100%);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px #b85c8e44;
+    font-size: 1.7em;
+    cursor: pointer;
+    opacity: 0.92;
+    transition: 
+    background 0.4s,
+    box-shadow 0.3s,
+    transform 0.2s,
+    opacity 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1100;
+}
+#toggle-night:hover {
+    background: linear-gradient(135deg, #b85c8e 0%, #623346 100%);
+    box-shadow: 0 8px 24px #b85c8e77;
+    transform: scale(1.08) rotate(-8deg);
+    opacity: 1;
+}
+body.night #toggle-night {
+    background: linear-gradient(135deg, #2d1e2f 0%, #3e2131 100%);
+    color: #ffe6f0;
+}
+
+.animated-gradient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.animated-gradient-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, var(--overlay-color-2) 0%, var(--overlay-color-1) 100%);
+  opacity: 0.7;
+  filter: blur(60px) saturate(1.2);
+  mix-blend-mode: lighten;
+  animation: gradientMove 8s ease-in-out infinite alternate;
+}
+
+.animated-gradient-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, var(--overlay-color-1) 0%, var(--overlay-color-2) 100%);
+  opacity: 0.5;
+  filter: blur(80px) saturate(1.5);
+  animation: gradientMove 8s ease-in-out infinite alternate;
+  animation-delay: 4s;
+}
+
+
+
+@keyframes gradientMove {
+  0% { transform: scale(1) translate(0,0) rotate(0deg);}
+  50% { transform: scale(1.1) translate(40px, -30px) rotate(8deg);}
+  100% { transform: scale(1) translate(-40px, 30px) rotate(-8deg);}
 }
