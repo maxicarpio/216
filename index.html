@@ -14,6 +14,17 @@
             <h2 id="days-counter">[] días escribiendote.</h2>
             <h2 id="container-counter">[] fragmentos escritos.</h2>
         </div>
+        <!-- Quiz romántico -->
+        <button id="quiz-btn" class="quiz-btn">Quiz de nuestra historia 💌</button>
+        <div id="quiz-modal" class="quiz-modal" style="display:none;">
+        <div class="quiz-content">
+            <span id="quiz-close" class="quiz-close">&times;</span>
+            <div id="quiz-question"></div>
+            <div id="quiz-options"></div>
+            <div id="quiz-feedback"></div>
+            <button id="quiz-next" style="display:none;">Siguiente</button>
+        </div>
+        </div>
         <div class="principal">
             <button onclick="window.scrollTo(0,document.body.scrollHeight)" class="go-bottom">↓ Último fragmento</button>
             <button id="toggle-night" style="position:fixed;top:10px;right:10px;">🌙</button>
@@ -584,6 +595,12 @@
                    Hace mucho no te escribo de mañana, no lo suelo hacer ya que falta una gran cantidad de horas del día. Hoy me levanté, fuí al banco y me depositaron el doble del monto de la beca, al final tan loco no estaba. Hoy rendís python, mañana analisis. Sé que te va a ir excelente mi preciosa, te mereces todo esto y más. Te deseo muchos éxitos en tu examen, te espero a la vuelta con muchas ansias. Te amo <3
                 </p1>
             </div>
+            <div class="container">
+                <h2>10/06/2025 23:59</h2>
+                <p1>
+                   Efectivamente te fué increíble, estoy orgulloso de vos y, por fín, podés descansar. Te veo este finde, antes rindo el viernes, aún así muero por verte. Ahora me toca a mí, a ver como carajo me saco cuatro materias de ingeniería en una semana. Ahora más que nunca necesito tu apoyo y amor. Te olvidaste la calculadora, por suerte te la llevaron en uber. Te juntaste a merendar con tu mentora, en este momento estás con tus amigas. Se juntaron a cenar pizza y ahora están tomando, me alegra muchísimo que estés disfrutando de tus vacas desde el primer día. Otra vez, te espero a la vuelta mi princesa.
+                </p1>
+            </div>
         </div>
         <script>
             // Fecha de inicio 
@@ -695,6 +712,101 @@
             document.body.addEventListener('click', function() {
                 document.querySelectorAll('.container.open').forEach(c => c.classList.remove('open'));
             });
+
+            // Quiz romántico
+            const quiz = [
+            {
+                question: "¿Dónde fue nuestro primer encuentro?",
+                options: ["En Café Martinez", "En mi casa", "En el Deutschcamp", "En el taller de física"],
+                answer: 3
+            },
+            {
+                question: "¿Con qué comida intenté reconquistarte en marzo?",
+                options: ["Pizza", "Empanadas", "Ravioles", "Helado"],
+                answer: 2
+            },
+            {
+                question: "¿Qué regalo te llevé cuando decidimos reencontrarnos en marzo?",
+                options: ["Una carta", "Nada", "Flores", "Chocolate"],
+                answer: 2
+            },
+            {
+                question: "¿Qué actividad NO hicimos juntos?",
+                options: ["Hacer un picnic", "Jugar con plastilina", "Merendar en bendito", "Cenar fuera de casa"],
+                answer: 3
+            },
+            {
+                question: "¿Cuál fué la primera palabra en alemán que aprendí para intentar impresionarte?",
+                options: ["Liebe", "Danke", "Hallo", "Schön"],
+                answer: 3
+            }
+            ,{
+                question: "¿A qué lugar fuímos luego de que hayas vuelto de Punta Cana y yo de Brasil?",
+                options: ["Mi casa", "Casa de tus tíos", "Parque San Martín", "Plaza de la legislatura"],
+                answer: 2
+            },
+            {
+                question: "¿Cuál de estos momentos es mi momento favorito?",
+                options: ["Cuando nos conocimos en el taller", "Cuando nos reencontramos en marzo", "Cuando leyeron tu papelito del Deutschcamp", "Cuando me quedé a dormir en tu casa"],
+                answer: 2
+            }
+            ];
+            let quizIndex = 0;
+
+            const quizBtn = document.getElementById('quiz-btn');
+            const quizModal = document.getElementById('quiz-modal');
+            const quizClose = document.getElementById('quiz-close');
+            const quizQuestion = document.getElementById('quiz-question');
+            const quizOptions = document.getElementById('quiz-options');
+            const quizFeedback = document.getElementById('quiz-feedback');
+            const quizNext = document.getElementById('quiz-next');
+
+            quizBtn.onclick = () => {
+            quizModal.style.display = 'flex';
+            quizIndex = 0;
+            showQuizQuestion();
+            };
+            quizClose.onclick = () => quizModal.style.display = 'none';
+
+            function showQuizQuestion() {
+                quizFeedback.textContent = '';
+                quizNext.style.display = 'none';
+                const q = quiz[quizIndex];
+                quizQuestion.textContent = q.question;
+                quizOptions.innerHTML = '';
+                q.options.forEach((opt, i) => {
+                    const btn = document.createElement('button');
+                    btn.textContent = opt;
+                    btn.onclick = () => {
+                        if (i === q.answer) {
+                            quizFeedback.textContent = "¡Correcto! 💖";
+                            quizFeedback.style.color = "#b85c8e";
+                        } else {
+                            quizFeedback.textContent = "No, pero igual te amo 😘";
+                            quizFeedback.style.color = "#b85c8e";
+                        }
+                        // Mostrar SIEMPRE el botón siguiente después de responder
+                        quizNext.style.display = 'inline-block';
+                        quizNext.textContent = (quizIndex < quiz.length - 1) ? 'Siguiente' : 'Finalizar';
+                        // Deshabilitar los botones de respuesta después de responder
+                        Array.from(quizOptions.children).forEach(b => b.disabled = true);
+                    };
+                    quizOptions.appendChild(btn);
+                });
+            }
+
+            // Evento para avanzar o finalizar el quiz
+            quizNext.onclick = () => {
+                quizIndex++;
+                if (quizIndex < quiz.length) {
+                    showQuizQuestion();
+                } else {
+                    quizQuestion.textContent = "¡Terminaste el quiz!";
+                    quizOptions.innerHTML = "";
+                    quizFeedback.textContent = "¡Gracias por jugar! 💌";
+                    quizNext.style.display = 'none';
+                }
+            };
         </script>
     </body>
 </html>
