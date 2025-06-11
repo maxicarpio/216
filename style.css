@@ -361,3 +361,18 @@ body.night #toggle-night {
 .quiz-content button:hover { background: #623346; }
 body.night .quiz-content { background: #2d1e2f; color: #fff; }
 body.night .quiz-close { color: #ffe6f0; }
+
+
+body.night .quiz-btn,
+body.night .go-bottom {
+    background: rgba(60,30,60,0.85) !important;
+    color: #ffe6f0 !important;
+    box-shadow: 0 12px 40px 0 rgba(185, 92, 142, 0.25) !important;
+    border: 1.5px solid #b85c8e !important;
+}
+
+body.night .quiz-btn:hover,
+body.night .go-bottom:hover {
+    background: #b85c8e !important;
+    color: #fff !important;
+}
